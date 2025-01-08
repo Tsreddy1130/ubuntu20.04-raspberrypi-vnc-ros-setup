@@ -63,7 +63,14 @@ sudo apt install xfce4 xfce4-goodies -y
    ```bash
    vncserver
    ```
-7. Use a VNC client (e.g., RealVNC Viewer) to connect using `192.168.x.x:1`.
+   7.Intsall vnc client on your laptop (tightvncclient (or) tigervncclient ,You need to type your localip:1 to connect to  vnc client.exmaple:`192.168.0.12:1`
+   To kow your ip adress:
+   ```bash
+   ipa
+   ```
+   ```bash
+   hostname -I
+   ```
 
 ### **Note**: XFCE and tightvncserver may have compatibility issues with some ROS tools like RViz. For better compatibility, proceed with LXDE and tigervncserver (or) you can use LXDE and tightvnserver which vnc you like,LXDE has more graphics ui than xfce.
 
@@ -112,9 +119,14 @@ TigerVNC is recommended for better compatibility with ROS tools like RViz.
    sudo ufw allow 5901/tcp
    sudo ufw status
    ```
-6. Use a VNC client to connect using `192.168.x.x:1`.
-
----
+   6.Intsall vnc client on your laptop (tightvncclient (or) tigervncclient ,You need to type your localip:1 to connect to  vnc client.exmaple:`192.168.0.12:1`
+   To kow your ip adress:
+   ```bash
+   ipa
+   ```
+   ```bash
+   hostname -I
+   ```
 
 ## Additional Notes for ROS Compatibility
 1. Ensure all desktop environments have the necessary tools for running ROS GUI applications.
