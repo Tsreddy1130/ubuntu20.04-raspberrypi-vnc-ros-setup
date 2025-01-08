@@ -65,7 +65,7 @@ sudo apt install xfce4 xfce4-goodies -y
    ```
 7. Use a VNC client (e.g., RealVNC Viewer) to connect using `192.168.x.x:1`.
 
-### **Note**: XFCE may have compatibility issues with some ROS tools like RViz. For better compatibility, proceed with LXDE.
+### **Note**: XFCE and tightvncserver may have compatibility issues with some ROS tools like RViz. For better compatibility, proceed with LXDE and tigervncserver.
 
 ---
 
