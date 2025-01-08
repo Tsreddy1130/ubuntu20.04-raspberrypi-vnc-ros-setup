@@ -8,7 +8,7 @@ This guide provides step-by-step instructions to install Ubuntu 20.04 server on 
 
 ## Prerequisites
 1. Raspberry Pi with Ubuntu 20.04 Server installed.
-2. Basic familiarity with Linux commands.
+2. connect pi via SSH or any diplay,keyboard(if avilable)
 3. Internet connectivity.
 
 ---
@@ -20,7 +20,7 @@ sudo apt upgrade -y
 ```
 
 ---
-
+### **Note**: If you want better UI and graphics go with LXDE(recomended)
 ## Step 2: Install XFCE Desktop Environment
 XFCE is a lightweight desktop environment suitable for remote desktop setups.
 ```bash
@@ -65,7 +65,7 @@ sudo apt install xfce4 xfce4-goodies -y
    ```
 7. Use a VNC client (e.g., RealVNC Viewer) to connect using `192.168.x.x:1`.
 
-### **Note**: XFCE and tightvncserver may have compatibility issues with some ROS tools like RViz. For better compatibility, proceed with LXDE and tigervncserver.
+### **Note**: XFCE and tightvncserver may have compatibility issues with some ROS tools like RViz. For better compatibility, proceed with LXDE and tigervncserver (or) you can use LXDE and tightvnserver which vnc you like,LXDE has more graphics ui than xfce.
 
 ---
 
@@ -74,7 +74,17 @@ LXDE is an even lighter desktop environment, ideal for minimal resource usage.
 ```bash
 sudo apt install lxde -y
 ```
-1. Configure the `~/.vnc/xstartup` file for LXDE:
+## Step 5: Install TigerVNC Server
+TigerVNC is recommended for better compatibility with ROS tools like RViz.
+1. Remove other VNC server installations:
+   ```bash
+   sudo apt purge tightvncserver -y
+   ```
+2. Install TigerVNC Server:
+   ```bash
+   sudo apt install tigervnc-standalone-server -y
+   ```
+   3. Configure the `~/.vnc/xstartup` file for LXDE:
    ```bash
    vim ~/.vnc/xstartup
    ```
@@ -88,37 +98,21 @@ sudo apt install lxde -y
    # dbus-launch --exit-with-session startlxde
    vncserver-virtual -kill $DISPLAY
    ```
-2. Reboot the system:
+3. Reboot the system:
    ```bash
    sudo reboot
    ```
-3. Start VNC server:
-   ```bash
-   vncserver
-   ```
-
 ---
-
-## Step 5: Install TigerVNC Server
-TigerVNC is recommended for better compatibility with ROS tools like RViz.
-1. Remove other VNC server installations:
-   ```bash
-   sudo apt purge tightvncserver -y
-   ```
-2. Install TigerVNC Server:
-   ```bash
-   sudo apt install tigervnc-standalone-server -y
-   ```
-3. Start TigerVNC Server with `localhost` access disabled:
+4. Start TigerVNC Server with `localhost` access disabled:
    ```bash
    vncserver :1 -localhost no
    ```
-4. Configure the firewall to allow VNC traffic:
+5. Configure the firewall to allow VNC traffic:
    ```bash
    sudo ufw allow 5901/tcp
    sudo ufw status
    ```
-5. Use a VNC client to connect using `192.168.x.x:1`.
+6. Use a VNC client to connect using `192.168.x.x:1`.
 
 ---
 
